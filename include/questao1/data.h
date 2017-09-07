@@ -1,10 +1,13 @@
 /** @since 31/08/2017
  * 
- * @date 01/09/2017
+ * @date 02/09/2017
  */
 
 #ifndef data_h
 #define data_h
+
+#include <ostream>
+#include <sstream>
 
 class data{
 	private:
@@ -13,12 +16,14 @@ class data{
 		int ano;	
 	public:
 		data(int d,int m,int a);
+		void setDia(int d);
+		void setMes(int m);
+		void setAno(int a);
 		int getDia();
 		int getMes();
 		int getAno();
 
 		friend std::ostream& operator<< (std::ostream &o,data const datad);
-		//friend std::istream& operator>> (std::istream &i,data &date);
 };
 
 typedef enum st_tipo{
@@ -28,8 +33,6 @@ typedef enum st_tipo{
 	auxiliar			
 }tipo;
 
-void verificaData(data& datac,data& const dataAtual);
-void pegaData(std::istream& i,data& datav,data& const dataAtual);
 void pegaDataAtual(std::istream& i,data& datav);
 
 

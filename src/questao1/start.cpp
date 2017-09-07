@@ -1,6 +1,6 @@
 /** @since 31/08/2017
  * 
- * @date 1/09/2017
+ * @date 02/09/2017
  */
 #include <iostream>
 #include <string>
@@ -29,26 +29,28 @@ void start(std::vector<*empresa>& empresas,std::vector<*empresa>::iterator& ite,
 	while(valor_de_retorno2 != -1){
 		criarEmpresa(empresas,valor_de_retorno2,ite,i,dataAtual,valor_de_retorno3);
 		ite++;
+		i++;
 	}	
 	
 	std::cout << "Deseja listar os dados de todos os funcionarios de alguma empresa?" << std::endl;
-	std::string option;
-	int posicao;
+	
+	std::string option1;
 	tipo tipos1;
+	int posicao;
 
-	while(std::getline(std::cin,option)){
+	while(std::getline(std::cin,option1)){
 		
-		if(option == "n"){
+		if(option1 == "n"){
 			break;
 		}
 		
-		if(option == "s"){
+		if(option1 == "s"){
 			tipos1 = ajudante;
 		}
 		
-		if( (option!= "s") && (option!= "n") ){
+		if( (option1 != "s") && (option1 != "n") ){
 			std::cout<<"opção inválida, por favor digite 's' para listar os dados de todos os funcionarios de alguma 
-			empresa ou 'n' para nao listar. "<<std::endl << std::endl;
+			empresa ou 'n' para ir para a proxima opcao. "<<std::endl << std::endl;
 			continue;
 		}
 
@@ -61,39 +63,47 @@ void start(std::vector<*empresa>& empresas,std::vector<*empresa>::iterator& ite,
 			std::cout << "Por favor digite o nome da  empresa: " << std::endl;
 
 			while(std::getline(std::cin,option2)){
+				
 				for(std::vector<*empresa>::iterator iterat2 = empresas.begin() ; iterat2 != empresas.end() ; iterat2++){
-					if(option2 == (*iterat2.getNome())){
+					if(option2 == (*iterat2->getNome())){
 						tipos2 = certo;
 						iterat3 = iterat2;
 						break;
 					}
 				}
+
+				if(tipos2 == certo){
+					break;
+				}
+
 				std::cout << "Empresa nao encontrada. Por favor digite o nome da empresa exatamente igual a alguma existente." << std::endl << std::endl;
 				listaEmpresas(empresas);
-			}	
+			}
 		}
 
 		if(tipos2 == certo){
-		std::cout << "Os funcionarios da empresa " << option2 << "sao: " << std::endl << std::endl;
-		listaFuncionarios(iterat3);
-		std::cout << "Voce deseja ver todos os dados dos funcionarios de alguma outra empresa?" << std::endl;
+
+			std::cout << "Os funcionarios da empresa " << option2 << "sao: " << std::endl << std::endl;
+			listaFuncionarios(iterat3);
+			std::cout << "Voce deseja ver todos os dados dos funcionarios de alguma outra empresa?" << std::endl;
+
+			continue ;
 		
 		}
 	}
 	
 	std::cout << "Voce deseja da um aumento no salario de todos os funcionarios de alguma empresa?" << std::endl << std::endl;
 
-	std::string option4;
+	std::string option3;
 	tipo tipos3;
-	std::vector<*empresa>::iterator iterat4;
 
-	while(std::getline(std::cin,option4)){
+	while(std::getline(std::cin,option3)){
 		
-		if(option4 == "n"){
+		if(option3 == "n"){
 			break;
 		}
 
-		if(option4 == "s"){
+		if(option3 == "s"){
 			tipos3 = certo;
 			break;
 		}
@@ -102,30 +112,40 @@ void start(std::vector<*empresa>& empresas,std::vector<*empresa>::iterator& ite,
 	
 	}
 	
+	std::vector<*empresa>::iterator iterat4;
 	tipo tipos4;
-	std::string option3;
+	std::string option4;
 	float aux_aumento;
 
 	if(tipos3 == certo){
 
 		std::cout << "Por favor selecione a empresa que voce deseja da o aumento no salario de todos os funcionarios." << std::endl << std::endl;
 		
-		while(std::getline(std::cin,option3)){
+		while(std::getline(std::cin,option4)){
+			
 			for(std::vector<*empresa>::iterator iterat6 = empresas.begin() ; iterat6 != empresas.end() ; iterat6++){
-					if(option3 == (*iterat6.getNome())){	
-						tipos4 = certo;
-						iterat4 = iterat6;
-						break;
-					}	
+	
+				if(option4 == (*iterat6.getNome())){	
+					tipos4 = certo;
+					iterat4 = iterat6;
+					break;
+				}	
 			}
+
+			if(tipos4 == certo){
+				break;
+			}
+
+			std::cout << "Empresa nao encontrada. Por favor digite o nome da empresa exatamente igual a alguma existente." << std::endl << std::endl;
+			listaEmpresas(empresas);
 
 		}
 
 		if(tipos4 == certo){
 			std::cout << "O aumento sera de quantos %%?" << std::endl;
-			while(std::getline(std::cin,option3)){
+			while(std::getline(std::cin,option4)){
 				
-				std::stringstream ss(option3);
+				std::stringstream ss(option4);
 				
 				if(ss >> aux_aumento && ss.eof()){
 					break;
@@ -139,5 +159,52 @@ void start(std::vector<*empresa>& empresas,std::vector<*empresa>::iterator& ite,
 	}
 
 	std::cout << "Voce deseja listar todos os funcionarios em periodo de experiencia?" << std::endl << std::endl;
-	
+
+	tipo tipos5;
+	std::string option5;
+
+	while(std::getline(std::cin,option5)){
+
+		if(option5 == "n"){
+			break;
+		}
+
+		if(option5 == "s"){
+			tipos5 = correto;
+			break;
+		}
+
+		std::cout << "[ERRO]!" << std::endl;
+		std::cout << "Por favor digite 's' para listar os funcionarios em periodo de experiencia ou 'n' para nao listar. " << std::endl << std::endl;
+	}
+
+	std::vector<*empresa>::iterator iterat8;
+
+	if(tipos5 == correto){
+		
+		tipo tipos6;
+
+		std::cout << "Voce deseja listar os funcionarios em periodo de experiencia de qual empresa?" << std::endl;
+		
+		while(std::getline(std::cin,option5)){
+			
+			for(std::vector<*empresa>::iterator iterat7 = empresas.begin() ; iterat7 != empresas.end() ; iterat7++){
+
+				if(option5 == (*iterat7.getNome() ) ){
+					tipos6 = certo;
+					iterat8 = iterat7;
+					break;
+				}
+
+			}
+
+			if(tipos6 == certo){
+				break;
+			}		
+
+		}
+
+		listaFuncionario_em_periodo_de_experiencia(iterat8);
+
+	}
 }	
