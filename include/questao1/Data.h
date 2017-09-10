@@ -29,8 +29,7 @@ class Data
 		std::string getDia();
 		std::string getMes();
 		std::string getAno();
-		
-		friend std::ostream& operator<< (std::ostream &o,Data datad);
+	
 		Data& operator=(Data& data_parametro);
 };
 

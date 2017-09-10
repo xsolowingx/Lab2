@@ -11,21 +11,28 @@ private:
 public:
 	static int totalEmpresas;
 	static int getTotalEmpresas();
+	static void listOptions();
+
 	Empresa(std::string n,std::string CP);
 	Empresa();
 	~Empresa();
 
 	void setNome(std::string n);
 	void setCNPJ(std::string CP);
-	void addFuncionario(Funcionario* func);
+	void addFuncionario(std::vector<Empresa*> empresas);
+	int verificaRG(std::vector<Empresa*> empresas,std::string& rg_funcionario,tipoEstado& estado_rg);
+	void pegaDataADM(Data& dataADM);
+
+	std::vector<Funcionario*>::iterator getBegin();
+	std::vector<Funcionario*>::iterator getEnd();
 
 	std::string getNome();
 	std::string getCNPJ();
-
-	void listaFuncionario_em_experiencia();
-	void listaFuncionarios();
-	void aumento(float aum);
-
+	
+	void listaFuncionarios_em_experiencia();
+	std::ostream& listaFuncionarios(std::ostream& output_auxiliar);
+	void aumentarSalario(float aum);
+	friend std::ostream& operator<<(std::ostream& o,Empresa& emp);
 };
 
 #endif 

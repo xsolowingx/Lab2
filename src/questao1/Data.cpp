@@ -1,14 +1,22 @@
+/**
+ * @date 09/09/2017
+ * @file Data.cpp
+ * @brief arquivo que contém as implementações da classe Data.
+ * @since 31/08/2017
+ * @author Matheus de Jesus Leandro de Medeiros.
+ */
 #include "../../include/questao1/Data.h"
 
 Data Data::data_atual;
 
 void Data::atribuiData_atual()
-{
+{	
+	/*função que atribui a data atual.*/
 	
 	std::string line_d;
 	int d,m,a;
 
-	std::cout << std::endl << "Por favor digite o dia: " << std::endl;
+	std::cout << std::endl << "Por favor digite o dia atual: " << std::endl;
 
 	while(std::getline(std::cin, line_d) )
 	{
@@ -28,10 +36,8 @@ void Data::atribuiData_atual()
 		}
 		std::cout << std::endl << "Dia invalido, os dias sao numeros inteiros que variam de 1  a 30. " << std::endl;
 	}
-	
-	//dia = line_d;
 
-	std::cout << std::endl << "Por favor digite o mes: " << std::endl;
+	std::cout << std::endl << "Por favor digite o mes atual: " << std::endl;
 
 	std::string line_m;
 
@@ -54,9 +60,7 @@ void Data::atribuiData_atual()
 		std::cout << std::endl << "Mes invalido, o mes e um inteiro que varia de 1 a 12. " << std::endl;
 	}
 
-	//mes = line;
-
-	std::cout << std::endl << "Por favor digite o ano: " << std::endl;
+	std::cout << std::endl << "Por favor digite o ano autal: " << std::endl;
 
 	std::string line_a;
 
@@ -79,27 +83,28 @@ void Data::atribuiData_atual()
 		std::cout << std::endl << "ano invalido, ano e um inteiro que varia de 0 ate o ano atual. " << std::endl;
 	}
 
-	//ano = line;
-
 	Data data_auxiliar(line_d,line_m,line_a);
 	data_atual = data_auxiliar;
 
 }
 
 Data Data::getData_atual()
-{
+{	
+	/*função que retorna a data atual digitada pelo usuário.*/
 	return data_atual;
 }
 
 Data::Data(std::string d,std::string m, std::string a)
-{
+{	
+	/*construtor parametrizado.*/
 	dia = d;
 	mes = m;
 	ano = a;
 }
 
 Data::Data()
-{
+{	
+	/*construtor padrão.*/
 	dia = "1";
 	mes = "1";
 	ano = "1";
@@ -107,40 +112,41 @@ Data::Data()
 
 void Data::setDia(std::string d)
 {
+	/*atribui o dia.*/	
 	dia = d;
 }
 
 void Data::setMes(std::string m)
 {
+	/*atribui o mês.*/
 	mes = m;
 }
 
 void Data::setAno(std::string a)
 {
+	/*atribui o ano.*/
 	ano = a;
 }
 
 std::string Data::getDia()
 {
+	/*retorna o dia.*/
 	return dia;
 }
 
 std::string Data::getMes(){
+	/*retorna o mês.*/
 	return mes;
 }
 
 std::string Data::getAno(){
+	/*retorna o ano.*/
 	return ano;
 }
 
-std::ostream& operator<< (std::ostream &o,Data& data)
-{
-	o << data.getDia() << "/" << data.getMes() << "/" << data.getAno() << std::endl;
-	return o;
-}
-
 Data& Data::operator=(Data& data_parametro)
-{
+{	
+	/*sobrecarga do operador de atribuição da classe Data "=".*/
 	dia = data_parametro.getDia();
 	mes = data_parametro.getMes();
 	ano = data_parametro.getAno();

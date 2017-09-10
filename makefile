@@ -14,13 +14,15 @@ INC_DIR = ./include
 BIN_DIR = ./bin
 SRC_DIR = ./src
 OBJ_DIR = ./build
+DOC_DIR = ./doc
 #variáveis objetos.
 OBJETO1 = $(OBJ_DIR)/questao1/Funcionario.o $(OBJ_DIR)/questao1/Data.o $(OBJ_DIR)/questao1/Empresa.o\
-$(OBJ_DIR)/questao1/main1.o $(OBJ_DIR)/questao1/instanciamento.o
+$(OBJ_DIR)/questao1/main1.o 
+#$(OBJ_DIR)/questao1/instanciamento.o
 
 #variáveis arquivos .h
-ARQ_H1 = $(INC_DIR)/questao1/Data.h $(INC_DIR)/questao1/Funcionario.h $(INC_DIR)/questao1/Empresa.h\
-$(INC_DIR)/questao1/instanciamento.h
+ARQ_H1 = $(INC_DIR)/questao1/Data.h $(INC_DIR)/questao1/Funcionario.h $(INC_DIR)/questao1/Empresa.h
+#$(INC_DIR)/questao1/instanciamento.h
 
 # Garante que os alvos desta lista nao sejam confundidos com arquivos de mesmo nome
 .PHONY: all clean distclean doxy
@@ -30,7 +32,7 @@ questao1:	$(OBJETO1)
 	@echo "Ligando o alvo $@"
 	@echo "========s====="
 	$(CC) $(CFLAGS) $^ -o $(BIN_DIR)/questao1 
-	@echo "+++ [Executavel questao01 criado em $(BIN_DIR)] +++"
+	@echo "+++ [Executavel questao1 criado em $(BIN_DIR)] +++"
 	@echo "============="
 
 $(OBJ_DIR)/questao1/Funcionario.o:	$(SRC_DIR)/questao1/Funcionario.cpp $(ARQ_H1)
@@ -47,3 +49,7 @@ $(OBJ_DIR)/questao1/Empresa.o:	$(SRC_DIR)/questao1/Empresa.cpp $(ARQ_H1)
 
 $(OBJ_DIR)/questao1/instanciamento.o:	$(SRC_DIR)/questao1/instanciamento.cpp $(ARQ_H1)
 	$(CC) -c $(CFLAGS) $< -o $@
+
+clean:
+	$(RM) $(BIN_DIR)/questao1
+	$(RM) $(OBJ_DIR)/questao1/*.o

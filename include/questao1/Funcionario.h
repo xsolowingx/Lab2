@@ -27,14 +27,13 @@ public:
 
 	Funcionario(std::string n,float sal,std::string r,Data dataADM);
 	Funcionario();
-	Funcionario(Funcionario& Funcionariop);
+	Funcionario(Funcionario* funcionario);
 	
 	void setNome(std::string n);
 	void setSalario(float sal);
 	void setRg(std::string R);
 	void defineExperiencia();
 	void setData_de_admissao(Data dataADM);
-	void pegaData();
 
 	std::string getNome();
 	float getSalario();

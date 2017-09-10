@@ -1,19 +1,29 @@
+/**
+ * @date 09/09/2017
+ * @file Funcionario.cpp
+ * @brief arquivo que contém as implementações da classe Funcionario.
+ * @since 31/08/2017
+ * @author Matheus de Jesus Leandro de Medeiros.
+ */
 #include "../../include/questao1/Funcionario.h"
 #include "../../include/questao1/Data.h"
 #include <cstdlib>
 #include <string>
+#include <iomanip>
 
 int Funcionario::totalFuncionarios =0;
 
 int Funcionario::getTotalFuncionarios()
-{
+{	
+	/*retorna o total de funcionários.*/
 	return totalFuncionarios;
 }
 
 
 
 Funcionario::Funcionario(std::string n,float sal,std::string r, Data dataADM)
-{
+{	
+	/*construtor parametrizado.*/
 	nome = n;
 	salario = sal;
 	rg = r;
@@ -23,6 +33,7 @@ Funcionario::Funcionario(std::string n,float sal,std::string r, Data dataADM)
 
 Funcionario::Funcionario()
 {
+	/*construtor padrão.*/
 	nome = "sem nome";
 	salario = 0;
 	rg = "0";
@@ -32,32 +43,38 @@ Funcionario::Funcionario()
 	totalFuncionarios++;
 }
 
-Funcionario::Funcionario(Funcionario& funcionariop)
-{
-	nome = funcionariop.getNome();
-	salario = funcionariop.getSalario();
-	rg = funcionariop.getRg();
-	experiencia = funcionariop.getExperiencia();
-	data_de_admissao = funcionariop.data_de_admissao;
+Funcionario::Funcionario(Funcionario* funcionario)
+{	
+	/*construtor copia onde o parâmetro é um ponteiro de objeto.*/
+	nome = funcionario->getNome();
+	salario = funcionario->getSalario();
+	rg = funcionario->getRg();
+	experiencia = funcionario->getExperiencia();
+	data_de_admissao = funcionario->data_de_admissao;
 	totalFuncionarios++;
 }
 
 void Funcionario::setNome(std::string n)
-{
+{	
+	/*atribui o nome ao funcionário.*/
 	nome = n;
 }
 
 void Funcionario::setSalario(float sal)
-{
+{	
+	/*atribui o salario ao funcionário.*/
 	salario = sal;
 }
 
 void Funcionario::setRg(std::string R)
 {
+	/*atribui o rg ao funcionário.*/
 	rg = R;
 }
 
-void Funcionario::defineExperiencia(){
+void Funcionario::defineExperiencia()
+{
+	/*função que define se o funcionário está em período de experiência ou não.*/
 	int auxiliar_dataADM_MES,auxiliar_dataAtual_MES;
 	int auxiliar_dataADM_ANO,auxiliar_dataAtual_ANO;
 	
@@ -113,122 +130,61 @@ void Funcionario::defineExperiencia(){
 
 
 void Funcionario::setData_de_admissao(Data dataADM)
-{
+{	
+	/*atribui a data de admissão.*/
 	data_de_admissao = dataADM;
 }
 
-void Funcionario::pegaData()
-{
-	std::string line,dia,mes,ano;
-	int d,m,a;
-
-	std::cout << "Por favor digite o dia: " << std::endl;
-
-	while(std::getline(std::cin, line) )
-	{
-		
-		std::stringstream ss(line);
-		
-		if(ss >> d && ss.eof())
-		{
-
-			if( ( d < 1 || d > 30) )
-			{
-				std::cout << "Dia invalido, os dias vao de 1 a 30. " << std::endl;
-			}
-			break;
-		}
-		std::cout << "Dia invalido, os dias sao numeros inteiros que variam de 1  a 30. " << std::endl;
-	}
-
-	dia = line;
-
-	std::cout << "Por favor digite o mes: " << std::endl;
-
-	while(std::getline(std::cin, line) )
-	{
-		
-		std::stringstream ss(line);
-		
-		if(ss >> m && ss.eof())
-		{
-			if(m < 1 || m > 12)
-			{
-				std::cout << "Mes invalido, o mes varia de 1 a 12. " << std::endl;
-			}
-			break;
-		}
-		std::cout << "Mes invalido, o mes e um inteiro que varia de 1 a 12. " << std::endl;
-	}
-	
-	mes = line;
-
-	std::cout << "Por favor digite o ano: " << std::endl;
-
-	while(std::getline(std::cin, line) )
-	{
-		
-		std::stringstream ss(line);
-		
-		if(ss >> a && ss.eof())
-		{
-			if(a < 0 ){
-				std::cout << "ano invalido, ano varia de 0 ate o ano atual. " << std::endl;
-			}
-			break;
-		}
-		std::cout << "Ano invalido, ano e um inteiro que varia de 0 ate o ano atual. " << std::endl;
-	}
-
-	ano = line;
-
-	data_de_admissao.setDia(dia);
-	data_de_admissao.setMes(mes);
-	data_de_admissao.setAno(ano);
-	
-}
 
 std::string Funcionario::getNome()
 {
+	/*retorna o nome do funcionário.*/
 	return nome;
 }
 
 float Funcionario::getSalario()
 {
+	/*retorna o salário.*/
 	return salario;
 }
 
 std::string Funcionario::getRg()
-{
+{	
+	/*retorna o rg.*/
 	return rg;
 }
 
 tipoExperiencia Funcionario::getExperiencia()
 {
+	/*retorna experiencia do funcionário(novato ou veterano).*/	
 	return experiencia;
 }
 
 Data Funcionario::getData_de_admissao()
 {
+	/*retorna a data de admissão.*/
 	return data_de_admissao;
 }
 
 std::ostream& operator<< (std::ostream& o, Data d)
-{
+{	
+	/*sobrecarga do operador de inserção da classe Data.*/
 	o << d.getDia() << "/" << d.getMes() << "/" << d.getAno();
 	return o;
 }
 
 std::ostream& operator<< (std::ostream &o,Funcionario* f)
-{
-	o << "Nome: " << f->getNome() << std::endl << "RG: " << f->getRg() << std::endl
+{	
+	/*sobrecarga do operador de inserção da classe Funcionario.*/
+	o<< std::setprecision(2) << std::fixed << "Nome: " << f->getNome() << std::endl << "RG: " << f->getRg() << std::endl
 	<< "Data de adimissao: " << f->getData_de_admissao() << std::endl
-	<< "Salario: " << f->getSalario() << std::endl << std::endl;
+	<< "Salario: R$" << f->getSalario() << std::endl << std::endl;
 	return o;
 }
 
 Funcionario& Funcionario::operator=(Funcionario& f)
-{
+{	
+	/*sobrecarga do operador de atribuição da classe Funcionario.*/
 	nome = f.getNome();
 	salario = f.getSalario();
 	rg = f.getRg();
@@ -239,6 +195,7 @@ Funcionario& Funcionario::operator=(Funcionario& f)
 
 bool Funcionario::operator==(Funcionario func)
 {
+	/*sobrecarga do operador de igualdade da classe funcionário.*/
 	if(rg == func.getRg())
 	{
 		return true;

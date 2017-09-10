@@ -1,0 +1,71 @@
+\hypertarget{classEmpresa}{}\section{Empresa Class Reference}
+\label{classEmpresa}\index{Empresa@{Empresa}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classEmpresa_ab783265086554404af6f736ff9d0d7a8}\label{classEmpresa_ab783265086554404af6f736ff9d0d7a8}} 
+{\bfseries Empresa} (std\+::string n, std\+::string CP)
+\item 
+\mbox{\Hypertarget{classEmpresa_ae09e36a3ebf47d1b0d7e22daaf48d4f2}\label{classEmpresa_ae09e36a3ebf47d1b0d7e22daaf48d4f2}} 
+void {\bfseries set\+Nome} (std\+::string n)
+\item 
+\mbox{\Hypertarget{classEmpresa_a156749c88810780ca1a62f05b06bb58d}\label{classEmpresa_a156749c88810780ca1a62f05b06bb58d}} 
+void {\bfseries set\+C\+N\+PJ} (std\+::string CP)
+\item 
+\mbox{\Hypertarget{classEmpresa_ac725f5fcfc4b0b657ee46e3df6380b32}\label{classEmpresa_ac725f5fcfc4b0b657ee46e3df6380b32}} 
+void {\bfseries add\+Funcionario} (std\+::vector$<$ \hyperlink{classEmpresa}{Empresa} $\ast$$>$ empresas)
+\item 
+\mbox{\Hypertarget{classEmpresa_ac7f4538cb5558feb51a6ec0a4862c4f4}\label{classEmpresa_ac7f4538cb5558feb51a6ec0a4862c4f4}} 
+int {\bfseries verifica\+RG} (std\+::vector$<$ \hyperlink{classEmpresa}{Empresa} $\ast$$>$ empresas, std\+::string \&rg\+\_\+funcionario, tipo\+Estado \&estado\+\_\+rg)
+\item 
+\mbox{\Hypertarget{classEmpresa_a1e95bbb3040949ff8c2c9d9c72790f77}\label{classEmpresa_a1e95bbb3040949ff8c2c9d9c72790f77}} 
+void {\bfseries pega\+Data\+A\+DM} (\hyperlink{classData}{Data} \&data\+A\+DM)
+\item 
+\mbox{\Hypertarget{classEmpresa_a8c0e59dc8f5572cec43dc0c6024b9188}\label{classEmpresa_a8c0e59dc8f5572cec43dc0c6024b9188}} 
+std\+::vector$<$ \hyperlink{classFuncionario}{Funcionario} $\ast$ $>$\+::iterator {\bfseries get\+Begin} ()
+\item 
+\mbox{\Hypertarget{classEmpresa_af748aca402403db39d1fc026206d3a5c}\label{classEmpresa_af748aca402403db39d1fc026206d3a5c}} 
+std\+::vector$<$ \hyperlink{classFuncionario}{Funcionario} $\ast$ $>$\+::iterator {\bfseries get\+End} ()
+\item 
+\mbox{\Hypertarget{classEmpresa_a1e14e38c8d7faa8361b5bf9326aeff24}\label{classEmpresa_a1e14e38c8d7faa8361b5bf9326aeff24}} 
+std\+::string {\bfseries get\+Nome} ()
+\item 
+\mbox{\Hypertarget{classEmpresa_a58e38db6319a94d66d5e2709c01ebea3}\label{classEmpresa_a58e38db6319a94d66d5e2709c01ebea3}} 
+std\+::string {\bfseries get\+C\+N\+PJ} ()
+\item 
+\mbox{\Hypertarget{classEmpresa_a2181d72d4b2b20ee1a15be6600a00a8f}\label{classEmpresa_a2181d72d4b2b20ee1a15be6600a00a8f}} 
+void {\bfseries lista\+Funcionarios\+\_\+em\+\_\+experiencia} ()
+\item 
+\mbox{\Hypertarget{classEmpresa_a91a31064935ca78dea6a7e6af4f0b02f}\label{classEmpresa_a91a31064935ca78dea6a7e6af4f0b02f}} 
+std\+::ostream \& {\bfseries lista\+Funcionarios} (std\+::ostream \&output\+\_\+auxiliar)
+\item 
+\mbox{\Hypertarget{classEmpresa_a06270a8a581998e75e4660e9141a6130}\label{classEmpresa_a06270a8a581998e75e4660e9141a6130}} 
+void {\bfseries aumentar\+Salario} (float aum)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classEmpresa_a72ddcb1853185ad8b4c2c236d45d71f8}\label{classEmpresa_a72ddcb1853185ad8b4c2c236d45d71f8}} 
+static int {\bfseries get\+Total\+Empresas} ()
+\item 
+\mbox{\Hypertarget{classEmpresa_abbfdf5b331b159abf7e33a68d385c626}\label{classEmpresa_abbfdf5b331b159abf7e33a68d385c626}} 
+static void {\bfseries list\+Options} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classEmpresa_ad6f81c56426d49e897cb42a0d684dc49}\label{classEmpresa_ad6f81c56426d49e897cb42a0d684dc49}} 
+static int {\bfseries total\+Empresas} = 0
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classEmpresa_a23e0f32d27be57939085210b3d6f9251}\label{classEmpresa_a23e0f32d27be57939085210b3d6f9251}} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&o, \hyperlink{classEmpresa}{Empresa} \&emp)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/xsolowingx/\+L\+P1/\+Programas/\+Lab2/include/questao1/Empresa.\+h\item 
+/home/xsolowingx/\+L\+P1/\+Programas/\+Lab2/src/questao1/\hyperlink{Empresa_8cpp}{Empresa.\+cpp}\end{DoxyCompactItemize}
